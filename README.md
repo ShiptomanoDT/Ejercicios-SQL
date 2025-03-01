@@ -15,6 +15,40 @@ SELECT user_id,stars
 FROM reviews
 WHERE stars=3;
 ```
+#### Práctica 3 - SQL WHERE AND Practice Exercise
+```python
+SELECT *
+FROM reviews
+WHERE stars > 3 
+  AND review_id < 6000
+  AND review_id >2000
+  AND user_id != 142;
+```
+#### Práctica 4 - SQL AND OR Practice Exercise
+```python
+SELECT * 
+FROM reviews
+WHERE (stars > 2 AND stars <= 4) 
+  AND (user_id = 123
+  OR user_id = 265
+  OR user_id = 362);
+```
+#### Práctica 5 - SQL BETWEEN Practice Exercise
+```python
+SELECT manufacturer, drug, units_sold 
+FROM pharmacy_sales
+WHERE (manufacturer = 'AbbVie'
+  OR manufacturer = 'Biogen'
+  OR manufacturer = 'Eli Lilly')
+  AND units_sold BETWEEN 100000 AND 105000;
+```
+#### Práctica 6 - SQL IN Practice Exercise
+```python
+SELECT manufacturer, drug, units_sold
+FROM pharmacy_sales
+WHERE manufacturer IN('Roche','Bayer','AstraZeneca') 
+ AND units_sold NOT BETWEEN 55000 AND 550000;
+```
 
 ### Lección 102
 #### Práctica 1
