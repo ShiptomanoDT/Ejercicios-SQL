@@ -9,9 +9,11 @@ Ejercicios de Laboratorio
 ```python
 SELECT product_id, product_category, product_name FROM products
 ```
-#### Práctica 2
+#### Práctica 2 - WHERE Practice Exercise
 ```python
-# Código de la solución para la práctica 2 de la lección 101
+SELECT user_id,stars 
+FROM reviews
+WHERE stars=3;
 ```
 
 ### Lección 102
