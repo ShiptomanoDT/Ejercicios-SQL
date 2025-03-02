@@ -151,13 +151,28 @@ FROM product_spend
 GROUP BY category;
 ```
 ### Lección 206
-#### Práctica 1
+#### Práctica 11 - Practice SQL Subtraction: CVS Pharmacy Interview Question
 ```python
-# Código de la solución para la práctica 1 de la lección 206
+SELECT drug, total_sales-cogs AS total_profit
+FROM pharmacy_sales
+GROUP BY drug,total_profit
+ORDER BY total_profit DESC
+LIMIT 3
 ```
-#### Práctica 2
+#### Práctica 12 - Practice SQL Arithmetic: JPMorgan Chase SQL Interview Question
 ```python
-# Código de la solución para la práctica 2 de la lección 206
+SELECT card_name, MAX(issued_amount)-MIN(issued_amount) AS difference
+FROM monthly_cards_issued
+GROUP BY card_name
+ORDER BY difference DESC;
+```
+#### Práctica 13 - SQL Math Practice Exercise: Big-Mover Months
+```python
+SELECT ticker, COUNT(ticker)
+FROM stock_prices
+WHERE ((close - open)*100)/open > 10 OR ((close - open)*100)/open < -10
+GROUP BY ticker
+ORDER BY count DESC;
 ```
 
 ### Lección 207
