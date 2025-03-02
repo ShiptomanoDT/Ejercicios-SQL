@@ -196,32 +196,63 @@ FROM parts_assembly
 WHERE finish_date IS NULL;
 ```
 ### Lección 210
-#### Práctica 1
+#### Práctica 17 - Using CASE-ELSE Clause with CASE Statement in SELECT Statement
 ```python
-# Código de la solución para la práctica 1 de la lección 210
+SELECT actor,character,platform, avg_likes,
+CASE 
+  WHEN avg_likes >= 15000 THEN 'Super Likes'
+  WHEN avg_likes BETWEEN 5000 AND 14999 THEN 'Good Likes'
+  ELSE 'Low Likes'
+  END AS likes_category
+FROM marvel_avengers
+ORDER BY avg_likes DESC;
 ```
-#### Práctica 2
+#### Práctica 18 - NYT SQL Interview Question: Laptop vs. Mobile Viewership
 ```python
-# Código de la solución para la práctica 2 de la lección 210
+SELECT 
+  COUNT(CASE 
+    WHEN device_type='laptop' THEN 1
+    ELSE NULL
+  END) AS laptop_views
+  ,COUNT(CASE 
+    WHEN device_type IN('tablet','phone') THEN 1
+    ELSE NULL
+  END) AS mobile_views
+FROM viewership;
 ```
 
 ### Lección 211
-#### Práctica 1
+#### Práctica 19
 ```python
 # Código de la solución para la práctica 1 de la lección 211
 ```
-#### Práctica 2
+#### Práctica 20
+```python
+# Código de la solución para la práctica 2 de la lección 211
+```
+#### Práctica 21
 ```python
 # Código de la solución para la práctica 2 de la lección 211
 ```
 
 ### Lección 212
-#### Práctica 1
+#### Práctica 22
 ```python
 # Código de la solución para la práctica 1 de la lección 212
 ```
-#### Práctica 2
+#### Práctica 23
 ```python
 # Código de la solución para la práctica 2 de la lección 212
 ```
+#### Práctica 24
+```python
+# Código de la solución para la práctica 2 de la lección 212
+```
+#### Práctica 25
+```python
+# Código de la solución para la práctica 2 de la lección 212
+```
+#### Práctica 26
+```python
+# Código de la solución para la práctica 2 de la lección 212
 ```
