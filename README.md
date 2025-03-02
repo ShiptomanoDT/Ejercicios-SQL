@@ -222,17 +222,29 @@ FROM viewership;
 ```
 
 ### Lección 211
-#### Práctica 19
+#### Práctica 19 - Easy SQL JOIN Practice Exercise
 ```python
-# Código de la solución para la práctica 1 de la lección 211
+SELECT * 
+FROM trades
+JOIN users
+  ON trades.user_id = users.user_id;
 ```
-#### Práctica 20
+#### Práctica 20 - Harder SQL Join Interview Question
 ```python
-# Código de la solución para la práctica 2 de la lección 211
+SELECT  city, COUNT(order_id)
+FROM trades
+JOIN users
+  ON trades.user_id = users.user_id
+WHERE status = 'Completed'
+GROUP BY city
+ORDER BY COUNT(order_id) DESC
+LIMIT 3
 ```
-#### Práctica 21
+#### Práctica 21 - Handling Nulls + JOIN SQL Interview Question
 ```python
-# Código de la solución para la práctica 2 de la lección 211
+SELECT page_id 
+FROM pages
+WHERE page_id NOT IN (SELECT DISTINCT(page_id) FROM page_likes);
 ```
 
 ### Lección 212
