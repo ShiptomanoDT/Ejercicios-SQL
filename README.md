@@ -112,14 +112,14 @@ WHERE ticker='NFLX';
 ```
 
 ### Lección 203
-#### Práctica 1 - GROUP BY Practice Exercise #1
+#### Práctica 6 - GROUP BY Practice Exercise #1
 ```python
 SELECT ticker,MIN(open)
 FROM stock_prices
 GROUP BY ticker
 ORDER BY MIN(open) DESC
 ```
-#### Práctica 2 - GROUP BY Practice Exercise #2
+#### Práctica 7 - GROUP BY Practice Exercise #2
 ```python
 SELECT skill,COUNT(candidate_id) 
 FROM candidates
@@ -128,14 +128,14 @@ ORDER BY COUNT(candidate_id) DESC;
 ```
 
 ### Lección 204
-#### Práctica 1 - SQL HAVING MIN Practice Exercise
+#### Práctica 8 - SQL HAVING MIN Practice Exercise
 ```python
 SELECT ticker,MIN(open)
 FROM stock_prices
 GROUP BY ticker
 HAVING MIN(open)>100;
 ```
-#### Práctica 2 - SQL HAVING Practice Exercise #2
+#### Práctica 9 - SQL HAVING Practice Exercise #2
 ```python
 SELECT candidate_id
 FROM candidates
@@ -144,7 +144,7 @@ HAVING COUNT(skill)>2;
 ```
 
 ### Lección 205
-#### Práctica 1 - SQL COUNT DISTINCT Practice Exercise
+#### Práctica 10 - SQL COUNT DISTINCT Practice Exercise
 ```python
 SELECT category, COUNT(DISTINCT product)
 FROM product_spend
