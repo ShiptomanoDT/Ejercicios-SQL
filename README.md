@@ -80,24 +80,35 @@ WHERE age BETWEEN 18 AND 22
 ```
 ## Intermediate SQL
 
-### Lección 201
-#### Práctica 1
-```python
-# Código de la solución para la práctica 1 de la lección 201
-```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 201
-```
-
 ### Lección 202
-#### Práctica 1
+#### Práctica 1 - SQL COUNT Practice Exercise
 ```python
-# Código de la solución para la práctica 1 de la lección 202
+SELECT COUNT(*) 
+FROM pharmacy_sales;
 ```
-#### Práctica 2
+#### Práctica 2 - SQL SUM Practice Exercise
 ```python
-# Código de la solución para la práctica 2 de la lección 202
+SELECT COUNT(manufacturer), SUM(total_sales) 
+FROM pharmacy_sales
+WHERE manufacturer='Pfizer';
+```
+#### Práctica 3 - SQL AVG Practice Exercise
+```python
+SELECT AVG(open) 
+FROM stock_prices
+WHERE ticker='GOOG';
+```
+#### Práctica 4 - SQL MIN Practice Exercise: Microsoft Stock
+```python
+SELECT MIN(open) 
+FROM stock_prices
+WHERE ticker='MSFT';
+```
+#### Práctica 5 - SQL MAX Practice Exercise: Tesla Stock
+```python
+SELECT MAX(open) 
+FROM stock_prices
+WHERE ticker='NFLX';
 ```
 
 ### Lección 203
