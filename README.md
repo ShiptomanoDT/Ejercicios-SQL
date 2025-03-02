@@ -176,35 +176,25 @@ ORDER BY count DESC;
 ```
 
 ### Lección 207
-#### Práctica 1
+#### Práctica 14 - SQL CEIL Practice Exercise
 ```python
-# Código de la solución para la práctica 1 de la lección 207
+SELECT drug, CEIL(total_sales/units_sold) AS unit_cost
+FROM pharmacy_sales
+WHERE manufacturer = 'Merck'
+ORDER BY unit_cost;
 ```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 207
-```
-
 ### Lección 208
-#### Práctica 1
+#### Práctica 15 - Google SQL Interview Question Using Division & Casting
 ```python
-# Código de la solución para la práctica 1 de la lección 208
+Ejercicio bloqueado (requiere suscripción premiun)
 ```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 208
-```
-
 ### Lección 209
-#### Práctica 1
+#### Práctica 16 - Tesla Null SQL Interview Question
 ```python
-# Código de la solución para la práctica 1 de la lección 209
+SELECT part, assembly_step
+FROM parts_assembly
+WHERE finish_date IS NULL;
 ```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 209
-```
-
 ### Lección 210
 #### Práctica 1
 ```python
