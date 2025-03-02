@@ -248,23 +248,32 @@ WHERE page_id NOT IN (SELECT DISTINCT(page_id) FROM page_likes);
 ```
 
 ### Lección 212
-#### Práctica 22
+#### Práctica 22 - Extracting Parts from Dates in SQL
 ```python
-# Código de la solución para la práctica 1 de la lección 212
+SELECT user_id,
+  EXTRACT(DAYS FROM (MAX(post_date) - MIN(post_date))) AS days_between
+FROM posts
+WHERE EXTRACT(YEAR FROM post_date) = '2021'
+GROUP BY 1
+HAVING COUNT(post_id) > 1
+ORDER BY user_id;
 ```
-#### Práctica 23
+#### Práctica 23 - Adding and Subtracting Intervals in SQL
 ```python
-# Código de la solución para la práctica 2 de la lección 212
+SELECT DISTINCT user_id
+FROM emails 
+INNER JOIN texts
+ON emails.email_id = texts.email_id
+WHERE texts.action_date = emails.signup_date + INTERVAL '1 day'
+  AND texts.signup_action = 'Confirmed';
 ```
-#### Práctica 24
+#### Práctica 24 - Facebook/META SQL Interview Question Using Dates
 ```python
-# Código de la solución para la práctica 2 de la lección 212
-```
-#### Práctica 25
-```python
-# Código de la solución para la práctica 2 de la lección 212
-```
-#### Práctica 26
-```python
-# Código de la solución para la práctica 2 de la lección 212
+SELECT user_id,
+  EXTRACT(DAYS FROM (MAX(post_date) - MIN(post_date))) AS days_between
+FROM posts
+WHERE EXTRACT(YEAR FROM post_date) = '2021'
+GROUP BY user_id
+HAVING COUNT(post_id) > 1
+ORDER BY user_id;
 ```
