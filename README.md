@@ -4,17 +4,19 @@ Ejercicios de Laboratorio
 
 ## Basic SQL
 
-### Lección 101
+### Lección 102
 #### Práctica 1 - SQL Select Practice Exercise
 ```python
 SELECT product_id, product_category, product_name FROM products
 ```
+### Lección 103
 #### Práctica 2 - WHERE Practice Exercise
 ```python
 SELECT user_id,stars 
 FROM reviews
 WHERE stars=3;
 ```
+### Lección 104
 #### Práctica 3 - SQL WHERE AND Practice Exercise
 ```python
 SELECT *
@@ -24,6 +26,7 @@ WHERE stars > 3
   AND review_id >2000
   AND user_id != 142;
 ```
+
 #### Práctica 4 - SQL AND OR Practice Exercise
 ```python
 SELECT * 
@@ -33,6 +36,7 @@ WHERE (stars > 2 AND stars <= 4)
   OR user_id = 265
   OR user_id = 362);
 ```
+### Lección 105
 #### Práctica 5 - SQL BETWEEN Practice Exercise
 ```python
 SELECT manufacturer, drug, units_sold 
@@ -42,6 +46,7 @@ WHERE (manufacturer = 'AbbVie'
   OR manufacturer = 'Eli Lilly')
   AND units_sold BETWEEN 100000 AND 105000;
 ```
+### Lección 106
 #### Práctica 6 - SQL IN Practice Exercise
 ```python
 SELECT manufacturer, drug, units_sold
@@ -49,87 +54,30 @@ FROM pharmacy_sales
 WHERE manufacturer IN('Roche','Bayer','AstraZeneca') 
  AND units_sold NOT BETWEEN 55000 AND 550000;
 ```
-
-### Lección 102
-#### Práctica 1
-```python
-# Código de la solución para la práctica 1 de la lección 102
-```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 102
-```
-
-### Lección 103
-#### Práctica 1
-```python
-# Código de la solución para la práctica 1 de la lección 103
-```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 103
-```
-
-### Lección 104
-#### Práctica 1
-```python
-# Código de la solución para la práctica 1 de la lección 104
-```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 104
-```
-
-### Lección 105
-#### Práctica 1
-```python
-# Código de la solución para la práctica 1 de la lección 105
-```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 105
-```
-
-### Lección 106
-#### Práctica 1
-```python
-# Código de la solución para la práctica 1 de la lección 106
-```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 106
-```
-
 ### Lección 107
-#### Práctica 1
+#### Prácticas 7 - SQL LIKE % Practice
 ```python
-# Código de la solución para la práctica 1 de la lección 107
-```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 107
+SELECT * 
+FROM customers 
+WHERE customer_name LIKE 'F%ck';
 ```
 
+#### Práctica 8 - SQL LIKE _ Practice
+```python
+SELECT * 
+FROM customers 
+WHERE customer_name LIKE '_ee%';
+```
 ### Lección 108
-#### Práctica 1
+#### Práctica 9 - SQL Filtering Practice Exercise #1
 ```python
-# Código de la solución para la práctica 1 de la lección 108
+SELECT * 
+FROM customers 
+WHERE age BETWEEN 18 AND 22
+  AND state IN('Victoria','Tasmania','Queensland')
+  AND gender !='n/a'
+  AND (customer_name LIKE 'A%' OR customer_name LIKE 'B%');
 ```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 108
-```
-
-### Lección 109
-#### Práctica 1
-```python
-# Código de la solución para la práctica 1 de la lección 109
-```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 109
-```
-
 ## Intermediate SQL
 
 ### Lección 201
