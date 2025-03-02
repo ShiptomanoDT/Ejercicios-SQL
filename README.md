@@ -112,35 +112,44 @@ WHERE ticker='NFLX';
 ```
 
 ### Lección 203
-#### Práctica 1
+#### Práctica 1 - GROUP BY Practice Exercise #1
 ```python
-# Código de la solución para la práctica 1 de la lección 203
+SELECT ticker,MIN(open)
+FROM stock_prices
+GROUP BY ticker
+ORDER BY MIN(open) DESC
 ```
-#### Práctica 2
+#### Práctica 2 - GROUP BY Practice Exercise #2
 ```python
-# Código de la solución para la práctica 2 de la lección 203
+SELECT skill,COUNT(candidate_id) 
+FROM candidates
+GROUP BY skill
+ORDER BY COUNT(candidate_id) DESC;
 ```
 
 ### Lección 204
-#### Práctica 1
+#### Práctica 1 - SQL HAVING MIN Practice Exercise
 ```python
-# Código de la solución para la práctica 1 de la lección 204
+SELECT ticker,MIN(open)
+FROM stock_prices
+GROUP BY ticker
+HAVING MIN(open)>100;
 ```
-#### Práctica 2
+#### Práctica 2 - SQL HAVING Practice Exercise #2
 ```python
-# Código de la solución para la práctica 2 de la lección 204
+SELECT candidate_id
+FROM candidates
+GROUP BY candidate_id
+HAVING COUNT(skill)>2;
 ```
 
 ### Lección 205
-#### Práctica 1
+#### Práctica 1 - SQL COUNT DISTINCT Practice Exercise
 ```python
-# Código de la solución para la práctica 1 de la lección 205
+SELECT category, COUNT(DISTINCT product)
+FROM product_spend
+GROUP BY category;
 ```
-#### Práctica 2
-```python
-# Código de la solución para la práctica 2 de la lección 205
-```
-
 ### Lección 206
 #### Práctica 1
 ```python
