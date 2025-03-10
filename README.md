@@ -438,3 +438,11 @@ SELECT page_id
 FROM pages
 WHERE page_id NOT IN (SELECT DISTINCT(page_id) FROM page_likes);
 ```
+
+### Lección 311
+#### Práctica 12 - SQL LOWER Practice Exercise 
+```sql
+SELECT *
+FROM customers
+WHERE LOWER(customer_name) LIKE '%son'AND gender = 'Male' AND age = 20;
+```
