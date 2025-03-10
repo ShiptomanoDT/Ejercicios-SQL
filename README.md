@@ -279,18 +279,30 @@ ORDER BY user_id;
 ```
 ## Advanced SQL
 
-### Lección 301
-#### Práctica 1 - SQL Window Functions Practice Exercise
-```sql
--- Añade tu solución aquí
-```
-
-#### Práctica 2 - SQL CTE (Common Table Expressions) Practice Exercise
-```sql
--- Añade tu solución aquí
-```
-
 ### Lección 302
+#### Práctica 1 - CTE & Subquery Example: Identify the Top-Selling Artist
+```sql
+WITH mayor_ingreso AS(
+  SELECT 
+    genre, MAX(concert_revenue/number_of_members) AS revenue_per_member
+    FROM concerts
+  GROUP BY genre
+)
+
+SELECT artist_name, concert_revenue, mi.genre, number_of_members,revenue_per_member
+FROM mayor_ingreso AS mi
+JOIN concerts AS c
+ON mi.genre = c.genre
+WHERE revenue_per_member * number_of_members = concert_revenue
+ORDER BY revenue_per_member DESC,artist_name
+```
+
+#### Práctica 2 - Practice CTE and Subquery Interview Questions
+```sql
+
+```
+
+### Lección 303
 #### Práctica 3 - SQL Recursive CTE Practice Exercise
 ```sql
 -- Añade tu solución aquí
