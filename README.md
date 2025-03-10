@@ -299,7 +299,16 @@ ORDER BY revenue_per_member DESC,artist_name
 
 #### Práctica 2 - Practice CTE and Subquery Interview Questions
 ```sql
-
+SELECT c.customer_id 
+FROM customer_contracts as c
+LEFT JOIN products as p
+ON c.product_id = p.product_id
+GROUP BY c.customer_id
+HAVING COUNT(DISTINCT(p.product_category))=
+( 
+  SELECT COUNT(DISTINCT(product_category))
+  FROM products 
+)  
 ```
 
 ### Lección 303
