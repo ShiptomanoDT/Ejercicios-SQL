@@ -440,9 +440,17 @@ WHERE page_id NOT IN (SELECT DISTINCT(page_id) FROM page_likes);
 ```
 
 ### Lección 311
-#### Práctica 12 - SQL LOWER Practice Exercise 
+#### Práctica 13 - SQL LOWER Practice Exercise 
 ```sql
 SELECT *
 FROM customers
 WHERE LOWER(customer_name) LIKE '%son'AND gender = 'Male' AND age = 20;
+```
+
+#### Práctica 14 - CONCAT SQL Interview Question
+```sql
+SELECT manufacturer, CONCAT('$',ROUND( SUM(total_sales)*0.000001,0),' million') AS sale
+FROM pharmacy_sales 
+GROUP BY manufacturer
+ORDER BY SUM(total_sales) DESC;
 ```
