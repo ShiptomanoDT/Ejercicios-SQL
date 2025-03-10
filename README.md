@@ -310,6 +310,19 @@ HAVING COUNT(DISTINCT(p.product_category))=
   FROM products 
 )  
 ```
+#### Práctica 3 - Swapped Food Delivery
+```sql
+SELECT
+  CASE
+    WHEN order_id = (
+      SELECT COUNT(order_id) 
+      FROM orders
+    ) THEN order_id
+    ELSE order_id % 2 * 2 - 1 + order_id
+  END AS ordenado_id, item
+FROM orders
+ORDER BY ordenado_id
+```
 
 ### Lección 303
 #### Práctica 3 - SQL Recursive CTE Practice Exercise
