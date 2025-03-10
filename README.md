@@ -389,12 +389,42 @@ ORDER BY measurement_day
 ```
 
 ### Lección 305
-#### Práctica 8 - SQL Full-Text Search Practice Exercise
+#### Práctica 8 - LEAD AND LAG Example: Analyzing Stocks Data
 ```sql
--- Añade tu solución aquí
+--No se logro
 ```
 
-#### Práctica 9 - SQL Geospatial Functions Practice Exercise
+#### Práctica 9 - Y-on-Y Growth Rate - Wayfair SQL Interview Question
 ```sql
--- Añade tu solución aquí
+SELECT 
+  EXTRACT(YEAR FROM transaction_date) AS year,
+  product_id, spend AS curr_year_spend,
+  LAG(spend) OVER(
+    PARTITION BY product_id 
+    ORDER BY transaction_date) AS prev_year_spend,
+  ROUND(100 * (spend - LAG(spend) OVER(
+    PARTITION BY product_id 
+    ORDER BY transaction_date)) / LAG(spend) OVER(
+    PARTITION BY product_id 
+    ORDER BY transaction_date),2) AS yoy_rate
+FROM user_transactions;
 ```
+
+#### Práctica 10 - LEAD LAG SQL Interview Question
+```sql
+SELECT 
+  EXTRACT(YEAR FROM transaction_date) AS year,
+  product_id, spend AS curr_year_spend,
+  LAG(spend) OVER(
+    PARTITION BY product_id 
+    ORDER BY transaction_date) AS prev_year_spend,
+  ROUND(100 * (spend - LAG(spend) OVER(
+    PARTITION BY product_id 
+    ORDER BY transaction_date)) / LAG(spend) OVER(
+    PARTITION BY product_id 
+    ORDER BY transaction_date),2) AS yoy_rate
+FROM user_transactions;
+```
+
+
+### Lección 307
