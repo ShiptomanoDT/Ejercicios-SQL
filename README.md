@@ -426,5 +426,15 @@ SELECT
 FROM user_transactions;
 ```
 
-
 ### Lección 307
+#### Práctica 11 - Tricky UNION SQL Interview Question Asked By Amazon
+```sql
+--no se logro
+```
+
+#### Práctica 12 - Except Practice Exercise: FB SQL Interview Question
+```sql
+SELECT page_id 
+FROM pages
+WHERE page_id NOT IN (SELECT DISTINCT(page_id) FROM page_likes);
+```
