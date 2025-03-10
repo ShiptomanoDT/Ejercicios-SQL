@@ -325,34 +325,76 @@ ORDER BY ordenado_id
 ```
 
 ### Lección 303
-#### Práctica 3 - SQL Recursive CTE Practice Exercise
+#### Práctica 4 - JP Morgan Aggregate Window Function SQL Interview Question
 ```sql
--- Añade tu solución aquí
-```
-
-#### Práctica 4 - SQL Pivot Table Practice Exercise
-```sql
--- Añade tu solución aquí
-```
-
-### Lección 303
-#### Práctica 5 - SQL JSON Functions Practice Exercise
-```sql
--- Añade tu solución aquí
-```
-
-#### Práctica 6 - SQL XML Functions Practice Exercise
-```sql
--- Añade tu solución aquí
+SELECT DISTINCT card_name,
+  FIRST_VALUE(issued_amount) OVER (
+    PARTITION BY (card_name) 
+    ORDER BY issue_year, issue_month
+  ) AS issued_amount
+FROM monthly_cards_issued
+ORDER BY issued_amount DESC;
 ```
 
 ### Lección 304
-#### Práctica 7 - SQL Full-Text Search Practice Exercise
+#### Práctica 5 - Top 5 Artists - Spotify SQL Interview Question
+```sql
+WITH ranking AS (
+    SELECT artist_name, COUNT(rank),
+    DENSE_RANK() OVER(ORDER BY COUNT(rank) DESC) AS artist_rank
+    FROM artists AS a 
+    JOIN songs AS s
+    ON a.artist_id = s.artist_id 
+    JOIN global_song_rank AS r
+    ON s.song_id = r.song_id
+    WHERE rank <= 10
+    GROUP BY a.artist_name
+)
+
+SELECT artist_name, artist_rank
+FROM ranking 
+WHERE artist_rank <= 5
+```
+
+#### Práctica 6 - Walmart RANK SQL Interview Question
+```sql
+SELECT transaction_date, user_id, COUNT(product_id)
+FROM user_transactions
+WHERE (user_id,transaction_date) IN(
+  SELECT user_id,MAX(transaction_date) 
+  FROM user_transactions 
+  GROUP BY user_id
+)
+GROUP BY user_id,transaction_date
+ORDER BY transaction_date
+```
+
+#### Práctica 7 - Google RANK SQL Interview Question
+```sql
+SELECT DATE(measurement_time) AS measurement_day,
+SUM(CASE 
+      WHEN trans_rank %2 != 0 THEN measurement_value 
+      ELSE 0 END
+    ) AS odd_sum,
+SUM(CASE 
+      WHEN trans_rank %2 = 0 THEN measurement_value 
+      ELSE 0 END
+    ) AS even_sum
+FROM (
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY DATE(measurement_time) 
+    ORDER BY measurement_time) AS trans_rank
+FROM measurements) AS temp_
+GROUP BY measurement_day
+ORDER BY measurement_day
+```
+
+### Lección 305
+#### Práctica 8 - SQL Full-Text Search Practice Exercise
 ```sql
 -- Añade tu solución aquí
 ```
 
-#### Práctica 8 - SQL Geospatial Functions Practice Exercise
+#### Práctica 9 - SQL Geospatial Functions Practice Exercise
 ```sql
 -- Añade tu solución aquí
 ```
