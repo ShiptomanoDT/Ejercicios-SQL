@@ -591,13 +591,93 @@ AND LENGTH(capital)>LENGTH(name)
 
 ## 2 SELECT from World
 ### Problemas
-1. 
+### 1. Introduction
+- Observando:
 ```sql
--- Añade tu solución aquí
+SELECT name, continent, population FROM world
 ```
-2. 
+### 2. Large Countries
+- Modificando condicion en WHERE a:
 ```sql
--- Añade tu solución aquí
+SELECT name FROM world
+WHERE population >= 200000000
+```
+### 3. Per capita GDP
+- Agregando consulta:
+```sql
+SELECT name, gdp/population AS GDP
+FROM world
+WHERE population > 200000000
+```
+### 4. South America In millions
+- Agregando consulta:
+```sql
+SELECT name,population/1000000
+FROM world
+WHERE continent = 'South America'
+```
+### 5. France, Germany, Italy
+- Agregando consulta:
+```sql
+SELECT name,population
+FROM world
+WHERE name IN('France','Germany','Italy')
+```
+### 6. United
+- Agregando consulta:
+```sql
+SELECT name
+FROM world
+WHERE name LIKE '%United%'
+```
+### 7. Two ways to be big
+- Agregando consulta:
+```sql
+SELECT name, population, area
+FROM world
+WHERE area > 3000000 OR population > 250000000
+```
+### 8. One or the other (but not both)
+- Agregando consulta:
+```sql
+SELECT name, population, area
+FROM world
+WHERE area > 3000000 XOR population > 250000000
+```
+### 9. Rounding
+- Agregando consulta:
+```sql
+SELECT name, ROUND(population/1000000,2) AS population, ROUND(GDP/1000000000,2) AS GDP
+FROM world
+WHERE continent = 'South America'
+```
+### 10. Trillion dollar economies
+- Agregando consulta:
+```sql
+SELECT name, ROUND(gdp/population,-3) AS GDP
+FROM world
+WHERE gdp > 1000000000000 AND GDP
+```
+### 11. Name and capital have the same length
+- Modificando a:
+```sql
+SELECT name, capital
+FROM world
+WHERE LENGTH(name)=LENGTH(capital)
+```
+### 12. Matching name and capital
+- Modificando a:
+```sql
+SELECT name, capital
+FROM world
+WHERE LEFT(name,1)=LEFT(capital,1) AND name != capital
+```
+### 13. All the vowels
+- Modificando a:
+```sql
+SELECT name
+   FROM world
+WHERE name LIKE '%a%' AND name LIKE '%e%' AND name LIKE '%i%' AND name LIKE '%o%' AND name LIKE '%u%' AND name NOT LIKE '% %'
 ```
 ### QUIZ
 | Pregunta | Respuesta |
