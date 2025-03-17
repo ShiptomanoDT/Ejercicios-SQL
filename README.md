@@ -687,13 +687,110 @@ WHERE name LIKE '%a%' AND name LIKE '%e%' AND name LIKE '%i%' AND name LIKE '%o%
 
 ## 3 SELECT from Nobel
 ### Problemas
-1. 
+### 1. Winners from 1950
+- Modificando año:
 ```sql
--- Añade tu solución aquí
+SELECT yr, subject, winner
+  FROM nobel
+ WHERE yr = 1950
 ```
-2. 
+### 2. 1962 Literature
+- Modificando año y materia:
 ```sql
--- Añade tu solución aquí
+SELECT winner
+  FROM nobel
+ WHERE yr = 1962
+   AND subject = 'literature'
+```
+### 3. Albert Einstein
+- Agregando consulta:
+```sql
+SELECT yr, subject
+FROM nobel
+WHERE winner = 'Albert Einstein'
+```
+### 4. Recent Peace Prizes
+- Agregando consulta:
+```sql
+SELECT winner
+FROM nobel
+WHERE subject = 'peace' AND yr >= 2000
+```
+### 5. Literature in the 1980's
+- Agregando consulta:
+```sql
+SELECT yr, subject, winner
+FROM nobel
+WHERE subject = 'literature' AND yr BETWEEN 1980 AND 1989
+```
+### 6. Only Presidents
+- Modificando consulta:
+```sql
+SELECT * FROM nobel
+ WHERE winner IN('Theodore Roosevelt', 'Thomas Woodrow Wilson', 'Jimmy Carter', 'Barack Obama')
+```
+### 7. John
+- Agregando consulta:
+```sql
+SELECT winner
+FROM nobel
+WHERE winner LIKE 'John%'
+```
+### 8. Chemistry and Physics from different years
+- Agregando consulta:
+```sql
+SELECT yr, subject, winner
+FROM nobel
+WHERE subject = 'physics' AND yr = 1980 OR subject = 'chemistry' AND yr = 1984
+```
+### 9. Exclude Chemists and Medics
+- Agregando consulta:
+```sql
+SELECT yr, subject, winner
+FROM nobel
+WHERE yr = 1980 AND subject NOT IN('chemistry', 'medicine')
+```
+### 10. Early Medicine, Late Literature
+- Agregando consulta:
+```sql
+SELECT yr, subject, winner
+FROM nobel
+WHERE subject = 'Medicine' AND yr < 1910 OR subject  = 'Literature' AND yr >= 2004
+```
+### Harder Questions - 11. Umlaut
+- Agregando consulta a:
+```sql
+SELECT *
+FROM nobel
+WHERE winner LIKE 'PETER%BERG'
+```
+### Harder Questions - 12. Apostrophe
+- Agregando consulta:
+```sql
+SELECT *
+FROM nobel
+WHERE winner LIKE 'EUGENE%NEILL'
+```
+### Harder Questions - 13. Knights of the realm
+- Agregando consulta:
+```sql
+SELECT winner, yr, subject
+FROM nobel
+WHERE winner LIKE 'Sir%'
+ORDER BY yr DESC, winner
+```
+### Harder Questions - 14. Chemistry and Physics last
+- Modificando consulta:
+```sql
+SELECT winner, subject
+FROM nobel
+WHERE yr=1984
+ORDER BY
+ CASE
+  WHEN subject IN ('physics','chemistry') THEN 1
+  ELSE 0
+ END,
+ subject, winner
 ```
 ### QUIZ
 | Pregunta | Respuesta |
