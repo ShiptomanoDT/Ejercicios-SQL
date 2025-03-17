@@ -457,14 +457,25 @@ ORDER BY SUM(total_sales) DESC;
 # Soluciones a las Prácticas de SQLZoo
 
 ## 0 SELECT basics
-### Problemas
-1. 
+### 1. Introducing the world table of countries
+- Modificando nombre de pais a:
 ```sql
--- Añade tu solución aquí
+SELECT population 
+FROM world
+WHERE name = 'Germany'
 ```
-2. 
+### 2. Scandinavia
+- Modificando nombre de paises a:
 ```sql
--- Añade tu solución aquí
+SELECT name, population FROM world
+  WHERE name IN ('Sweden', 'Norway', 'Denmark');
+```
+### 3. Just the right size
+- Modificando nombre el intervalo de area a:
+```sql
+SELECT name, area
+FROM world
+WHERE area BETWEEN 200000 AND 250000
 ```
 ### QUIZ
 | Pregunta | Respuesta |
