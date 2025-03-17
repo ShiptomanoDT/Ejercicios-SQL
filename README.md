@@ -1067,13 +1067,144 @@ ORDER BY mdate,matchid,team1,team2
 
 ## 7 More JOIN operations
 ### Problemas
-1. 
+### 1. 1962 movies
+- Observando:
 ```sql
--- Añade tu solución aquí
+SELECT id, title
+ FROM movie
+ WHERE yr=1962
 ```
-2. 
+### 2. When was Citizen Kane released?
+- Agregando consulta:
 ```sql
--- Añade tu solución aquí
+SELECT yr
+FROM movie
+WHERE title = 'Citizen Kane'
+```
+### 3. Star Trek movies
+- Agregando consulta:
+```sql
+SELECT id, title, yr
+FROM movie
+WHERE title LIKE '%Star Trek%'
+ORDER BY yr
+```
+### 4. id for actor Glenn Close 
+- Agregando consulta:
+```sql
+SELECT id
+FROM actor
+WHERE name = 'Glenn Close'
+```
+### 5. id for Casablanca
+- Agregando consulta:
+```sql
+SELECT id
+FROM movie
+WHERE title = 'Casablanca'
+```
+### 6. Cast list for Casablanca
+- Agregando consulta:
+```sql
+SELECT name
+FROM actor JOIN casting
+ON id = actorid
+WHERE movieid = 11768
+```
+### 7. Alien cast list
+- Agregando consulta:
+```sql
+SELECT name
+FROM actor JOIN casting
+ON id = actorid
+WHERE movieid = (SELECT id FROM movie WHERE title = 'Alien')
+```
+### 8. Harrison Ford movies
+- Agregando consulta:
+```sql
+SELECT title
+FROM movie JOIN casting
+ON id = movieid
+WHERE actorid = (SELECT id FROM actor WHERE name = 'Harrison Ford')
+```
+### 9. Harrison Ford as a supporting actor
+- Agregando consulta:
+```sql
+SELECT title
+FROM movie JOIN casting
+ON id = movieid
+WHERE actorid = (SELECT id FROM actor WHERE name = 'Harrison Ford') AND ord != 1
+```
+### 10. Lead actors in 1962 movies
+- Agregando consulta:
+```sql
+SELECT title, name
+FROM movie JOIN (SELECT name, movieid
+                 FROM actor JOIN casting 
+                 ON id = actorid
+                 WHERE ord = 1) AS acas
+ON id = movieid
+WHERE yr = 1962
+```
+### 11. Busy years for Rock Hudson
+- Modificando consulta a:
+```sql
+SELECT yr,COUNT(title) FROM
+  movie JOIN casting ON movie.id=movieid
+        JOIN actor   ON actorid=actor.id
+WHERE name='Rock Hudson'
+GROUP BY yr
+HAVING COUNT(title) > 2
+```
+### 12. 
+- Modificando consulta a:
+```sql
+SELECT DISTINCT title, name
+FROM actor
+JOIN casting ON id = actorid
+JOIN (SELECT title, movieid 
+      FROM casting 
+      JOIN movie ON movieid = id
+      WHERE actorid IN (
+      SELECT id FROM actor
+      WHERE name='Julie Andrews')) AS moviecast
+ON casting.movieid = moviecast.movieid
+WHERE casting.ord = 1
+```
+### 13. Actors with 15 leading roles
+- Agregando consulta:
+```sql
+SELECT name
+FROM actor 
+JOIN casting ON id = actorid
+WHERE ord = 1 
+GROUP BY name
+HAVING COUNT(movieid)>=15
+ORDER BY name
+```
+### 14. released in the year 1978
+- Agregando consulta:
+```sql
+SELECT title, COUNT(actorid)
+FROM movie
+JOIN casting ON id = movieid
+WHERE yr = 1978
+GROUP BY title
+ORDER BY COUNT(actorid) DESC, title
+```
+### 15. with 'Art Garfunkel'
+- Agregando consulta:
+```sql
+SELECT name
+FROM actor
+JOIN casting ON id = actorid
+WHERE movieid IN(SELECT movieid 
+                FROM casting 
+                JOIN movie ON movieid = id
+                WHERE actorid IN (SELECT id FROM actor
+                                  WHERE name='Art Garfunkel')
+                )
+AND name != 'Art Garfunkel'
 ```
 ### QUIZ
 | Pregunta | Respuesta |
