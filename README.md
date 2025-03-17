@@ -1421,7 +1421,6 @@ SELECT constituency,party, votes,
  WHERE constituency BETWEEN 'S14000021' AND 'S14000026'
    AND yr  = 2017
 ORDER BY posn, constituency
-
 ```
 ### 5. Winners Only
 - Modificando consulta a:
@@ -1460,13 +1459,87 @@ GROUP BY ge.party
 
 ## 9+ COVID 19
 ### Problemas
-1. 
+### 1. Introducing the covid table
+- Modificando nombre de pais a:
 ```sql
--- Añade tu solución aquí
+SELECT name, DAY(whn),
+ confirmed, deaths, recovered
+ FROM covid
+WHERE name = 'Spain'
+AND MONTH(whn) = 3 AND YEAR(whn) = 2020
+ORDER BY whn
 ```
-2. 
+### 2. Introducing the LAG function
+- Modificando consulta a:
 ```sql
--- Añade tu solución aquí
+SELECT name, DAY(whn), confirmed,
+   LAG(confirmed, 1) OVER (PARTITION BY name ORDER BY whn)
+ FROM covid
+WHERE name = 'Italy'
+AND MONTH(whn) = 3 AND YEAR(whn) = 2020
+ORDER BY whn
+```
+### 3. Number of new cases
+- Modificando consulta a:
+```sql
+SELECT name, DAY(whn),
+   confirmed - LAG(confirmed, 1) OVER (PARTITION BY name ORDER BY whn) AS new
+ FROM covid
+WHERE name = 'Italy'
+AND MONTH(whn) = 3 AND YEAR(whn) = 2020
+ORDER BY whn
+```
+### 4. Weekly changes
+- Modificando consulta a:
+```sql
+SELECT name, DATE_FORMAT(whn,'%Y-%m-%d'), confirmed - LAG(confirmed, 1) OVER (PARTITION BY name ORDER BY whn) AS new
+ FROM covid
+WHERE name = 'Italy'
+AND WEEKDAY(whn) = 0 AND YEAR(whn) = 2020
+ORDER BY whn
+```
+### 5. LAG using a JOIN
+- Modificando consulta a:
+```sql
+SELECT tw.name, DATE_FORMAT(tw.whn,'%Y-%m-%d'), 
+ tw.confirmed - lw.confirmed
+ FROM covid tw LEFT JOIN covid lw ON 
+  DATE_ADD(lw.whn, INTERVAL 1 WEEK) = tw.whn
+   AND tw.name=lw.name
+WHERE tw.name = 'Italy'
+AND WEEKDAY(tw.whn) = 0
+ORDER BY tw.whn
+```
+### 6. RANK()
+- Modificando consulta a:
+```sql
+SELECT 
+   name,
+   confirmed,
+   RANK() OVER (ORDER BY confirmed DESC) rc,
+   deaths,
+   RANK() OVER (ORDER BY deaths DESC) rc
+  FROM covid
+WHERE whn = '2020-04-20'
+ORDER BY confirmed DESC
+```
+### 7. Infection rate
+- Modificando consulta a:
+```sql
+SELECT 
+   world.name,
+   ROUND(100000 * confirmed / population, 2),
+   RANK() OVER (ORDER BY (100000 * confirmed / population)) AS rank
+FROM covid 
+JOIN world ON covid.name = world.name
+WHERE whn = '2020-04-20' 
+  AND population > 10000000
+ORDER BY population DESC;
+```
+### 8. Turning the corner
+- Modificando consulta a:
+```sql
+/*No se pudo solucionar*/
 ```
 ### QUIZ
 | Pregunta | Respuesta |
