@@ -959,13 +959,105 @@ HAVING SUM(population)>=100000000
 
 ## 6 JOIN
 ### Problemas
-1. 
+### 1. 
+- Modificando a:
 ```sql
--- Añade tu solución aquí
+SELECT matchid,player
+FROM goal 
+WHERE teamid = 'GER'
 ```
-2. 
+### 2.
+- Agregando condicion con WHERE:
 ```sql
--- Añade tu solución aquí
+SELECT id,stadium,team1,team2
+  FROM game
+WHERE id = 1012
+```
+### 3. 
+- Modificando consulta a:
+```sql
+SELECT player, teamid, stadium, mdate
+  FROM game JOIN goal ON (id=matchid)
+WHERE teamid = 'GER'
+```
+### 4. 
+- Agregando consulta:
+```sql
+SELECT team1, team2, player
+  FROM game JOIN goal ON (id=matchid)
+WHERE player LIKE 'Mario%'
+```
+### 5. 
+- Modificando consulta a:
+```sql
+SELECT player, teamid, coach, gtime
+  FROM  goal JOIN eteam ON teamid=id
+ WHERE gtime<=10
+```
+### 6. 
+- Agregando consulta:
+```sql
+SELECT mdate, teamname
+FROM game g JOIN eteam e
+  ON g.team1 = e.id
+WHERE coach = 'Fernando Santos'
+```
+### 7. 
+- Agregando consulta:
+```sql
+SELECT player
+FROM game g JOIN goal go
+  ON g.id = go.matchid
+WHERE stadium = 'National Stadium, Warsaw'
+```
+### 8. More difficult questions
+- Modificando consulta a:
+```sql
+SELECT DISTINCT player
+  FROM game JOIN goal ON matchid = id 
+    WHERE (team1='GER' OR team2='GER') AND teamid != 'GER'
+```
+### 9. 
+- Modificando consulta a:
+```sql
+SELECT teamname, COUNT(matchid) AS total_goals
+  FROM eteam JOIN goal ON id=teamid
+ GROUP BY teamname
+```
+### 10. 
+- Agregando consulta:
+```sql
+SELECT stadium, COUNT(matchid) AS total_goals
+  FROM game JOIN goal ON id=matchid
+ GROUP BY stadium
+```
+### 11. 
+- Modificando consulta a:
+```sql
+SELECT matchid, mdate, COUNT(teamid)
+  FROM game JOIN goal ON matchid = id 
+ WHERE (team1 = 'POL' OR team2 = 'POL')
+GROUP BY matchid
+```
+### 12. 
+- Agregando consulta:
+```sql
+SELECT matchid, mdate, COUNT(teamid)
+  FROM game JOIN goal ON matchid = id 
+ WHERE (team1 = 'GER' OR team2 = 'GER') AND teamid = 'GER'
+GROUP BY matchid
+```
+### 13. 
+- Modificando consulta a:
+```sql
+SELECT mdate,
+  team1,
+  SUM(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1,
+  team2,
+  SUM(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
+  FROM game LEFT JOIN goal ON matchid = id
+GROUP BY mdate,team1
+ORDER BY mdate,matchid,team1,team2
 ```
 ### QUIZ
 | Pregunta | Respuesta |
