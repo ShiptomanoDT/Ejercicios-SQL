@@ -1549,13 +1549,99 @@ ORDER BY population DESC;
 
 ## 9 Self join
 ### Problemas
-1. 
+### 1. 
+- Agregando consulta:
 ```sql
--- Añade tu solución aquí
+SELECT COUNT(id)
+FROM stops
 ```
-2. 
+### 2. 
+- Agregando consulta:
 ```sql
--- Añade tu solución aquí
+SELECT id
+FROM stops
+WHERE name = 'Craiglockhart' 
+```
+### 3. 
+- Agregando consulta:
+```sql
+SELECT id, name
+FROM stops JOIN route ON id = stop
+WHERE num = 4 AND company = 'LRT'
+ORDER BY pos
+```
+### 4. Routes and stops
+- Modificando consulta a:
+```sql
+SELECT company, num, COUNT(*)
+FROM route WHERE stop=149 OR stop=53
+GROUP BY company, num
+HAVING COUNT(*) = 2
+```
+### 5. 
+- Modificando consulta a:
+```sql
+SELECT a.company, a.num, a.stop, b.stop
+FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+WHERE a.stop=53 AND b.stop = 149
+```
+### 6. 
+- Modificando consulta a:
+```sql
+SELECT a.company, a.num, stopa.name, stopb.name
+FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopa.name='Craiglockhart' AND stopb.name='London Road'
+```
+### 7. Using a self join
+- Agregando consulta:
+```sql
+SELECT DISTINCT a.company, a.num
+FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+WHERE a.stop=115 AND b.stop = 137
+```
+### 8. 
+- Agregando consulta:
+```sql
+SELECT a.company, a.num
+FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopa.name='Craiglockhart' AND stopb.name='Tollcross'
+```
+### 9. 
+- Agregando consulta:
+```sql
+SELECT stopb.name, a.company, a.num
+FROM route a JOIN route b ON
+  (a.company=b.company AND a.num=b.num)
+  JOIN stops stopa ON (a.stop=stopa.id)
+  JOIN stops stopb ON (b.stop=stopb.id)
+WHERE stopa.name='Craiglockhart' AND a.company = 'LRT'
+```
+### 10. 
+- Agregando consulta, la solucion se considera erronea por no tener el mismo orden, pero las tablas son las mismas:
+```sql
+SELECT DISTINCT
+  r1.num,
+  r1.company,
+  t.name,
+  r2.num,
+  r2.company
+FROM route r1
+  JOIN stops s1 ON r1.stop = s1.id
+  JOIN route r1t ON (r1.company = r1t.company AND r1.num = r1t.num)
+  JOIN stops t ON r1t.stop = t.id
+  JOIN route r2 ON t.id = r2.stop
+  JOIN route r2l ON (r2.company = r2l.company AND r2.num = r2l.num)
+  JOIN stops s2 ON r2l.stop = s2.id
+WHERE s1.name = 'Craiglockhart'
+  AND s2.name = 'Lochend';
 ```
 ### QUIZ
 | Pregunta | Respuesta |
