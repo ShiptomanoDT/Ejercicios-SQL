@@ -485,13 +485,103 @@ WHERE area BETWEEN 200000 AND 250000
 
 ## 1 SELECT name
 ### Problemas
-1. 
+### 1. 
+- Modificando LIKE a:
 ```sql
--- Añade tu solución aquí
+SELECT name FROM world
+  WHERE name LIKE 'Y%'
 ```
-2. 
+### 2. 
+- Modificando LIKE a:
 ```sql
--- Añade tu solución aquí
+SELECT name FROM world
+  WHERE name LIKE '%y'
+```
+### 3. 
+- Modificando LIKE a:
+```sql
+SELECT name FROM world
+  WHERE name LIKE '%x%'
+```
+### 4. 
+- Modificando LIKE a:
+```sql
+SELECT name FROM world
+  WHERE name LIKE '%land'
+```
+### 5. 
+- Modificando LIKE a:
+```sql
+SELECT name FROM world
+  WHERE name LIKE 'C%ia'
+```
+### 6. 
+- Modificando LIKE a:
+```sql
+SELECT name FROM world
+  WHERE name LIKE '%oo%'
+```
+### 7. 
+- Modificando LIKE a:
+```sql
+SELECT name FROM world
+  WHERE name LIKE '%a%a%a%'
+```
+### 8. 
+- Modificando LIKE a:
+```sql
+SELECT name FROM world
+ WHERE name LIKE '_t%'
+ORDER BY name
+```
+### 9. 
+- Modificando LIKE a:
+```sql
+SELECT name FROM world
+ WHERE name LIKE '%o__o%'
+```
+### 10. 
+- Modificando agregando LENGHT:
+```sql
+SELECT name FROM world
+ WHERE LENGTH(name) = 4
+```
+### 11. 
+- Modificando consulta a:
+```sql
+SELECT name
+  FROM world
+ WHERE name = capital
+```
+### 12. 
+- Modificando consulta a:
+```sql
+SELECT name
+  FROM world
+ WHERE capital = CONCAT(name,' City')
+```
+### 13. 
+- Agregando consulta a:
+```sql
+SELECT capital, name
+FROM world
+WHERE capital LIKE CONCAT('%',name,'%')
+```
+### 14. 
+- Agregando consulta a:
+```sql
+SELECT capital, name
+FROM world
+WHERE capital LIKE CONCAT('%',name,'%') 
+AND LENGTH(capital)>LENGTH(name)
+```
+### 15. 
+- Agregando consulta a:
+```sql
+SELECT name, REPLACE(capital,name,'')
+FROM world
+WHERE capital LIKE CONCAT('%',name,'%') 
+AND LENGTH(capital)>LENGTH(name)
 ```
 ### QUIZ
 | Pregunta | Respuesta |
