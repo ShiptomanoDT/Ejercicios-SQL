@@ -478,10 +478,96 @@ FROM world
 WHERE area BETWEEN 200000 AND 250000
 ```
 ### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+Tabla de Pregunta
+| name         | region       | area    | population | gdp          |
+|--------------|--------------|---------|------------|--------------|
+| Afghanistan  | South Asia   | 652225  | 26000000   |              |
+| Albania      | Europe       | 28728   | 3200000    | 6656000000   |
+| Algeria      | Middle East  | 2400000 | 32900000   | 75012000000  |
+| Andorra      | Europe       | 468     | 64000      |              |
+| ...          | ...          | ...     | ...        | ...          |
+
+1. Select the code which produces this table 
+
+| name         | population |
+|--------------|------------|
+| Bahrain      | 1234571    |
+| Swaziland    | 1220000    |
+| Timor-Leste  | 1066409    |
+
+- Respuesta: 
+```sql
+SELECT name, population
+  FROM world
+ WHERE population BETWEEN 1000000 AND 1250000
+```
+2. Pick the result you would obtain from this code: 
+```sql
+SELECT name, population
+      FROM world
+      WHERE name LIKE "Al%"
+```
+- Respuesta: 
+
+|          |            |
+|----------|------------|
+| Albania  | 3200000    |
+| Algeria  | 32900000   |
+
+3. Select the code which shows the countries that end in A or L 
+- Respuesta: 
+```sql
+SELECT name FROM world
+ WHERE name LIKE '%a' OR name LIKE '%l'
+```
+4. Pick the result from the query 
+```sql
+SELECT name,length(name)
+FROM world
+WHERE length(name)=5 and region='Europe'
+```
+- Respuesta: 
+
+| name  | length(name) |
+|-------|--------------|
+| Italy | 5            |
+| Malta | 5            |
+| Spain | 5            |
+
+5. Here are the first few rows of the world table: 
+
+| name         | region       | area    | population | gdp          |
+|--------------|--------------|---------|------------|--------------|
+| Afghanistan  | South Asia   | 652225  | 26000000   |              |
+| Albania      | Europe       | 28728   | 3200000    | 6656000000   |
+| Algeria      | Middle East  | 2400000 | 32900000   | 75012000000  |
+| Andorra      | Europe       | 468     | 64000      |              |
+| ...          | ...          | ...     | ...        | ...          |
+
+Pick the result you would obtain from this code: 
+```sql
+SELECT name, area*2 FROM world WHERE population = 64000
+```
+- Respuesta: 
+
+|         |        |
+|---------|--------|
+| Andorra | 936    |
+
+6. Select the code that would show the countries with an area larger than 50000 and a population smaller than 10000000 
+- Respuesta: 
+```sql
+SELECT name, area, population
+  FROM world
+ WHERE area > 50000 AND population < 10000000
+```
+7. Select the code that shows the population density of China, Australia, Nigeria and France 
+- Respuesta: 
+```sql
+SELECT name, population/area
+  FROM world
+ WHERE name IN ('China', 'Nigeria', 'France', 'Australia')
+```
 
 ## 1 SELECT name
 ### Problemas
@@ -584,10 +670,62 @@ WHERE capital LIKE CONCAT('%',name,'%')
 AND LENGTH(capital)>LENGTH(name)
 ```
 ### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+Tabla de Pregunta
+| name         | continent     | area    | population | gdp          |
+|--------------|---------------|---------|------------|--------------|
+| Afghanistan  | South Asia    | 652225  | 26000000   |              |
+| Albania      | Europe        | 28728   | 3200000    | 6656000000   |
+| Algeria      | Middle East   | 2400000 | 32900000   | 75012000000  |
+| Andorra      | Europe        | 468     | 64000      |              |
+| Brazil       | South America | 8550000 | 182800000  | 564852000000 |
+| Colombia     | South America | 1140000 | 45600000   |              |
+| Nauru        | Asia-Pacific  | 21      | 9900       |              |
+| Uzbekistan   | Central Asia  | 447000  | 26000000   |              |
+
+1. Select the code which gives the name of countries beginning with U 
+- Respuesta: 
+```sql
+SELECT name
+  FROM world
+ WHERE name LIKE 'U%'
+```
+2. Select the code which shows just the population of United Kingdom? 
+- Respuesta: 
+```sql
+SELECT population
+  FROM world
+ WHERE name = 'United Kingdom'
+```
+3. Select the answer which shows the problem with this SQL code - the intended result should be the continent of France:  
+- Respuesta: 
+_'name' should be name_
+4. Select the result that would be obtained from the following code: 
+- Respuesta: 
+
+|Nauru | 990|
+|------|----|
+
+5. Select the code which would reveal the name and population of countries in Europe and Asia 
+- Respuesta: 
+```sql
+SELECT name, population
+  FROM world
+ WHERE continent IN ('Europe', 'Asia')
+```
+6. Select the code which would give two rows 
+- Respuesta: 
+```sql
+SELECT name FROM world
+ WHERE name IN ('Cuba', 'Togo')
+```
+7. Select the result that would be obtained from this code: 
+- Respuesta: 
+
+|         |
+|---------|
+|Brazil   |
+|Colombia |
+
 
 ## 2 SELECT from World
 ### Problemas
@@ -679,11 +817,6 @@ SELECT name
    FROM world
 WHERE name LIKE '%a%' AND name LIKE '%e%' AND name LIKE '%i%' AND name LIKE '%o%' AND name LIKE '%u%' AND name NOT LIKE '% %'
 ```
-### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
 
 ## 3 SELECT from Nobel
 ### Problemas
@@ -792,11 +925,6 @@ ORDER BY
  END,
  subject, winner
 ```
-### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
 
 ## 4 SELECT within SELECT
 ### Problemas
@@ -887,11 +1015,6 @@ WHERE NOT EXISTS(
       AND w1.population <=3 * w2.population
 );
 ```
-### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
 
 ## 5 SUM and COUNT
 ### Problemas
@@ -951,11 +1074,6 @@ FROM world
 GROUP BY continent
 HAVING SUM(population)>=100000000
 ```
-### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
 
 ## 6 JOIN
 ### Problemas
@@ -1059,11 +1177,6 @@ SELECT mdate,
 GROUP BY mdate,team1
 ORDER BY mdate,matchid,team1,team2
 ```
-### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
 
 ## 7 More JOIN operations
 ### Problemas
@@ -1206,11 +1319,6 @@ WHERE movieid IN(SELECT movieid
                 )
 AND name != 'Art Garfunkel'
 ```
-### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
 
 ## 8 Using Null
 ### Problemas
@@ -1294,11 +1402,6 @@ SELECT t.name, CASE
 FROM teacher t LEFT JOIN dept d
   ON t.dept = d.id
 ```
-### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
 
 ## 8+ Numeric Examples
 ### Problemas
@@ -1451,11 +1554,6 @@ SELECT ge.party, COUNT(1)
 WHERE ge2.posn = 1
 GROUP BY ge.party
 ```
-### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
 
 ## 9+ COVID 19
 ### Problemas
@@ -1541,11 +1639,6 @@ ORDER BY population DESC;
 ```sql
 /*No se pudo solucionar*/
 ```
-### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
 
 ## 9 Self join
 ### Problemas
@@ -1643,8 +1736,3 @@ FROM route r1
 WHERE s1.name = 'Craiglockhart'
   AND s2.name = 'Lochend';
 ```
-### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
