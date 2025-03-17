@@ -1214,13 +1214,85 @@ AND name != 'Art Garfunkel'
 
 ## 8 Using Null
 ### Problemas
-1. 
+### 1. NULL, INNER JOIN, LEFT JOIN, RIGHT JOIN
+- Agregando consulta:
 ```sql
--- Añade tu solución aquí
+SELECT name
+FROM teacher
+WHERE dept IS NUL
 ```
-2. 
+### 2.
+- Observando:
 ```sql
--- Añade tu solución aquí
+SELECT teacher.name, dept.name
+ FROM teacher INNER JOIN dept
+           ON (teacher.dept=dept.id)
+```
+### 3. 
+- Agregando consulta:
+```sql
+SELECT t.name, d.name
+FROM teacher t
+LEFT JOIN dept d
+  ON t.dept = d.id
+```
+### 4.
+- Agregando consulta:
+```sql
+SELECT t.name, d.name 
+FROM teacher t
+RIGHT JOIN dept d
+  ON t.dept = d.id
+```
+### 5. 
+- Agregando consulta:
+```sql
+SELECT name, COALESCE(mobile,'07986 444 2266')
+FROM teacher
+```
+### 6.
+- Agregando consulta:
+```sql
+SELECT t.name, COALESCE(d.name, 'None')
+FROM teacher t
+LEFT JOIN dept d
+  ON t.dept = d.id
+```
+### 7. 
+- Agregando consulta:
+```sql
+SELECT COUNT(name), COUNT(mobile)
+FROM teacher
+```
+### 8.
+- Agregando consulta:
+```sql
+SELECT  d.name, COUNT(t.name)
+FROM teacher t RIGHT JOIN dept d
+  ON t.dept = d.id
+GROUP BY d.name
+```
+### 9. 
+- Agregando consulta:
+```sql
+SELECT t.name, CASE 
+         WHEN t.dept = 1 OR t.dept = 2 THEN 'Sci'
+         ELSE 'Art'
+       END
+FROM teacher t LEFT JOIN dept d
+  ON t.dept = d.id
+
+```
+### 10. 
+- Agregando consulta:
+```sql
+SELECT t.name, CASE 
+         WHEN t.dept IN(1,2) THEN 'Sci'
+         WHEN t.dept = 3 THEN 'Art'
+         ELSE 'None'
+       END
+FROM teacher t LEFT JOIN dept d
+  ON t.dept = d.id
 ```
 ### QUIZ
 | Pregunta | Respuesta |
