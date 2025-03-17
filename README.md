@@ -1302,13 +1302,81 @@ FROM teacher t LEFT JOIN dept d
 
 ## 8+ Numeric Examples
 ### Problemas
-1. 
+### 1. Check out one row
+- Modificando consulta a:
 ```sql
--- Añade tu solución aquí
+SELECT A_STRONGLY_AGREE
+  FROM nss
+ WHERE question='Q01'
+   AND institution='Edinburgh Napier University'
+   AND subject='(8) Computer Science'
 ```
-2. 
+### 2. Calculate how many agree or strongly agree
+- Modificando consulta a:
 ```sql
--- Añade tu solución aquí
+SELECT institution, subject
+  FROM nss
+ WHERE question='Q15' AND score >= 100
+```
+### 3. Unhappy Computer Students
+- Modificando consulta a:
+```sql
+SELECT institution, score
+  FROM nss
+ WHERE question='Q15'
+   AND score < 50
+   AND subject='(8) Computer Science'
+```
+### 4. More Computing or Creative Students?
+- Modificando consulta a:
+```sql
+SELECT subject, SUM(response)
+  FROM nss
+ WHERE question='Q22'
+   AND subject IN('(8) Computer Science', '(H) Creative Arts and Design')
+GROUP BY subject
+```
+### 5. Strongly Agree Numbers
+- Modificando consulta a:
+```sql
+SELECT subject, SUM(response*A_STRONGLY_AGREE/100)
+  FROM nss
+ WHERE question='Q22'
+   AND subject IN('(8) Computer Science', '(H) Creative Arts and Design')
+GROUP BY subject
+```
+### 6. Strongly Agree, Percentage
+- Agregando consulta:
+```sql
+SELECT subject, ROUND(SUM(response*A_STRONGLY_AGREE)/SUM(response))
+  FROM nss
+ WHERE question='Q22'
+   AND subject IN('(8) Computer Science', '(H) Creative Arts and Design')
+GROUP BY subject
+```
+### 7. Scores for Institutions in Manchester
+- Modificando consulta a:
+```sql
+SELECT institution, ROUND(SUM(score*response)/SUM(response)) AS score
+  FROM nss
+ WHERE question='Q22'
+   AND institution LIKE '%Manchester%'
+GROUP BY institution
+```
+### 8. Number of Computing Students in Manchester
+- Modificando consulta a:
+```sql
+SELECT 
+    institution, 
+    SUM(sample) AS total_sample,
+    SUM(CASE 
+          WHEN subject LIKE '%Computer Science%' THEN sample 
+          ELSE 0 
+        END) AS comp
+FROM nss
+WHERE question = 'Q01'
+  AND institution LIKE '%Manchester%'
+GROUP BY institution;
 ```
 ### QUIZ
 | Pregunta | Respuesta |
