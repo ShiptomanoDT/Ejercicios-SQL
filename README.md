@@ -1386,13 +1386,71 @@ GROUP BY institution;
 
 ## 9- Window function
 ### Problemas
-1. 
+### 1. Warming up
+- Modificando consulta a:
 ```sql
--- Añade tu solución aquí
+SELECT lastName, party, votes
+  FROM ge
+ WHERE constituency = 'S14000024' AND yr = 2017 /*se cambio constituency*/
+ORDER BY votes DESC
 ```
-2. 
+### 2. Who won?
+- Modificando consulta a:
 ```sql
--- Añade tu solución aquí
+SELECT party, votes, 
+       RANK() OVER (ORDER BY votes DESC) as posn
+  FROM ge
+ WHERE constituency = 'S14000024' AND yr = 2017
+ORDER BY party
+```
+### 3. PARTITION BY
+- Observando:
+```sql
+SELECT yr,party, votes,
+      RANK() OVER (PARTITION BY yr ORDER BY votes DESC) as posn
+  FROM ge
+ WHERE constituency = 'S14000021'
+ORDER BY party,yr
+```
+### 4. Edinburgh Constituency
+- Modificando consulta a:
+```sql
+SELECT constituency,party, votes, 
+       RANK() OVER (PARTITION BY constituency ORDER BY votes DESC) AS posn
+  FROM ge
+ WHERE constituency BETWEEN 'S14000021' AND 'S14000026'
+   AND yr  = 2017
+ORDER BY posn, constituency
+
+```
+### 5. Winners Only
+- Modificando consulta a:
+```sql
+SELECT ge.constituency, ge.party
+  FROM ge JOIN (SELECT constituency,party, votes, 
+       RANK() OVER (PARTITION BY constituency ORDER BY votes DESC) AS posn
+                FROM ge
+                WHERE constituency BETWEEN 'S14000021' AND 'S14000026'
+                AND yr  = 2017
+                ORDER BY posn, constituency
+               ) ge2
+  ON ge.party = ge2.party AND ge.constituency =ge2.constituency
+WHERE ge2.posn = 1
+GROUP BY constituency
+```
+### 6. Scottish seats
+- Modificando consulta a:
+```sql
+SELECT ge.party, COUNT(1)
+  FROM ge JOIN (SELECT constituency, party, votes,
+       RANK() OVER (PARTITION BY constituency ORDER BY votes DESC) AS posn
+                FROM ge
+                WHERE constituency LIKE 'S%'
+                AND yr  = 2017
+               ) ge2
+  ON ge.party = ge2.party AND ge.constituency = ge2.constituency AND ge.votes = ge2.votes
+WHERE ge2.posn = 1
+GROUP BY ge.party
 ```
 ### QUIZ
 | Pregunta | Respuesta |
