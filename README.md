@@ -454,3 +454,212 @@ FROM pharmacy_sales
 GROUP BY manufacturer
 ORDER BY SUM(total_sales) DESC;
 ```
+# Soluciones a las Prácticas de SQLZoo
+
+## 0 SELECT basics
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 1 SELECT name
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 2 SELECT from World
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 3 SELECT from Nobel
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 4 SELECT within SELECT
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 5 SUM and COUNT
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 6 JOIN
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 7 More JOIN operations
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 8 Using Null
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 8+ Numeric Examples
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 9- Window function
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 9+ COVID 19
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
+
+## 9 Self join
+### Problemas
+1. 
+```sql
+-- Añade tu solución aquí
+```
+2. 
+```sql
+-- Añade tu solución aquí
+```
+### QUIZ
+| Pregunta | Respuesta |
+|----------|-----------|
+| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
+| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
