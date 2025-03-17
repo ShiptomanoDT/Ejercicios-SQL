@@ -800,13 +800,92 @@ ORDER BY
 
 ## 4 SELECT within SELECT
 ### Problemas
-1. 
+### 1. Bigger than Russia
+- Modificando nombre de pais:
 ```sql
--- Añade tu solución aquí
+SELECT name FROM world
+  WHERE population >
+     (SELECT population FROM world
+      WHERE name='Russia')
 ```
-2. 
+### 2. Richer than UK
+- Agregando consulta:
 ```sql
--- Añade tu solución aquí
+SELECT name
+FROM world
+WHERE continent = 'Europe' AND gdp/population > (SELECT gdp/population FROM world WHERE name = 'United Kingdom') 
+```
+### 3. Neighbours of Argentina and Australia
+- Agregando consulta:
+```sql
+SELECT name, continent
+FROM world
+WHERE continent IN (SELECT continent FROM world WHERE name = 'Argentina' OR name = 'Australia')
+ORDER BY name
+```
+### 4. Between Canada and Poland
+- Agregando consulta:
+```sql
+SELECT name, population
+FROM world 
+WHERE population > (SELECT population FROM world WHERE name = 'United Kingdom') AND population < (SELECT population FROM world WHERE name = 'Germany')
+```
+### 5. Percentages of Germany
+- Agregando consulta:
+```sql
+SELECT name, CONCAT(ROUND((population*100)/(SELECT population FROM world WHERE name='Germany')),'%')AS Percentage
+FROM world
+WHERE continent = 'Europe'
+ORDER BY name
+```
+### 6. Bigger than every country in Europe
+- Modificando consulta:
+```sql
+SELECT name
+  FROM world
+ WHERE gdp >= (SELECT MAX(gdp)
+                          FROM world
+                          WHERE gdp>0 AND continent = 'Europe') AND continent != 'Europe'
+```
+### 7. Largest in each continent
+- Modificando consulta a:
+```sql
+SELECT continent, name, area FROM world x
+  WHERE area >=
+(SELECT MAX(area) FROM world y
+        WHERE y.continent=x.continent
+          AND population>0)  
+```
+### 8. First country of each continent (alphabetically)
+- Agregando consulta:
+```sql
+SELECT continent, name
+FROM world
+GROUP BY continent
+```
+### 9. Difficult Questions That Utilize Techniques Not Covered In Prior Sections
+- Agregando consulta:
+```sql
+SELECT name, continent, population
+FROM world
+WHERE continent IN(SELECT continent 
+                   FROM world 
+                   GROUP BY continent
+                   HAVING MAX(population) <=25000000
+)
+```
+### 10. Three time bigger
+- Agregando consulta:
+```sql
+SELECT w1.name, w1.continent
+FROM world w1
+WHERE NOT EXISTS(
+    SELECT *
+    FROM world w2
+    WHERE w2.continent = w1.continent
+      AND w2.name != w1.name
+      AND w1.population <=3 * w2.population
+);
 ```
 ### QUIZ
 | Pregunta | Respuesta |
