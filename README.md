@@ -895,13 +895,61 @@ WHERE NOT EXISTS(
 
 ## 5 SUM and COUNT
 ### Problemas
-1. 
+### 1. Total world population
+- Observando:
 ```sql
--- Añade tu solución aquí
+SELECT SUM(population)
+FROM world
 ```
-2. 
+### 2. List of continents
+- Agregando consulta:
 ```sql
--- Añade tu solución aquí
+SELECT DISTINCT continent
+FROM world
+```
+### 3. GDP of Africa
+- Agregando consulta:
+```sql
+SELECT SUM(gdp)
+FROM world
+WHERE continent = 'Africa'
+```
+### 4. Count the big countries
+- Agregando consulta:
+```sql
+SELECT COUNT(*) AS Countrys
+FROM world
+WHERE area > 1000000
+```
+### 5. Baltic states population
+- Agregando consulta:
+```sql
+SELECT SUM(population)
+FROM world
+WHERE name IN('Estonia', 'Latvia', 'Lithuania')
+```
+### 6. Using GROUP BY and HAVING - Counting the countries of each continent
+- Agregando consulta:
+```sql
+SELECT continent, COUNT(name)
+FROM world
+GROUP BY continent
+```
+### 7. Counting big countries in each continent
+- Agregando consulta:
+```sql
+SELECT continent, COUNT(name)
+FROM world
+WHERE population >= 10000000
+GROUP BY continent
+```
+### 8. Counting big continents
+- Agregando consulta:
+```sql
+SELECT continent
+FROM world
+GROUP BY continent
+HAVING SUM(population)>=100000000
 ```
 ### QUIZ
 | Pregunta | Respuesta |
