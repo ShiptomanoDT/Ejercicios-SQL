@@ -1738,82 +1738,110 @@ WHERE s1.name = 'Craiglockhart'
 
 ### 1. Customer Address
 ```sql
--- Añade tu solución aquí
+SELECT name, street
+FROM customers
+WHERE city = 'Porto Alegre'
 ```
 
 ### 2. Providers' City in Alphabetical Order
 ```sql
--- Añade tu solución aquí
+SELECT city
+FROM providers
+ORDER BY city
 ```
 
 ### 3. Higher and Lower Price
 ```sql
--- Añade tu solución aquí
+SELECT MAX(price) AS price, MIN(price) AS price
+FROM products
 ```
 
 ### 4. Expanding the Business
 ```sql
--- Añade tu solución aquí
+SELECT DISTINCT city
+FROM customers
 ```
 
 ### 5. Provider Ajax SA
 ```sql
--- Añade tu solución aquí
+SELECT prod.name AS name, prov.name AS name
+FROM products AS prod JOIN providers AS prov
+    ON prod.id_providers = prov.id
+WHERE prov.name = 'Ajax SA'
 ```
 
 ### 6. Legal Person
 ```sql
--- Añade tu solución aquí
+SELECT name
+FROM customers JOIN legal_person
+    ON customers.id = legal_person.id_customers
 ```
 
 ### 7. Passwords
 ```sql
--- Añade tu solución aquí
+SELECT id, password, MD5(password)
+FROM account;
 ```
 
 ### 8. Viruses
 ```sql
--- Añade tu solución aquí
+SELECT REPLACE(name,'H1','X') AS name
+FROM virus
 ```
 
 ## Nivel 2
 
 ### 9. Under 10 or Greater Than 100
 ```sql
--- Añade tu solución aquí
+SELECT id, name
+FROM products
+WHERE price NOT BETWEEN 10 AND 100 
 ```
 
 ### 10. Cheap Movies
 ```sql
--- Añade tu solución aquí
+SELECT m.id, m.name
+FROM movies m JOIN prices p
+    ON m.id_prices = p.id
+WHERE p.value < 2
 ```
 
 ### 11. Super Luxury
 ```sql
--- Añade tu solución aquí
+SELECT prod.name, prov.name, prod.price
+FROM products prod JOIN providers prov
+    ON prod.id_providers = prov.id
+WHERE prod.price > 1000 AND prod.id_categories = (SELECT id FROM categories WHERE name = 'Super Luxury'
 ```
 
 ### 12. How much earn a Doctor?
 ```sql
--- Añade tu solución aquí
+SELECT d.name, ROUND(SUM((a.hours*150)*(1+w.bonus/100)),1) AS salary
+FROM attendances a 
+JOIN doctors d
+    ON a.id_doctor = d.id
+JOIN work_shifts w
+    ON a.id_work_shift = w.id
+GROUP BY d.name
+ORDER BY salary DESC
 ```
 
 ### 13. Sillas Adyacentes
 ```sql
--- Añade tu solución aquí
+-- por resolver
 ```
 
 ### 14. Clasificación de un Árbol
 ```sql
--- Añade tu solución aquí
+-- por resolver
 ```
 
 ### 15. Seguidores
 ```sql
--- Añade tu solución aquí
+-- por resolver
 ```
 
 ### 16. Segundo Mayor y Menor
 ```sql
--- Añade tu solución aquí
+-- por resolver
 ```
