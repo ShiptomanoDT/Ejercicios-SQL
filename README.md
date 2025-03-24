@@ -1,5 +1,6 @@
 # Ejercicios-SQL
 Ejercicios de Laboratorio
+
 # Soluciones a las Prácticas de DataLemur
 
 ## Basic SQL
@@ -1481,12 +1482,6 @@ WHERE question = 'Q01'
   AND institution LIKE '%Manchester%'
 GROUP BY institution;
 ```
-### QUIZ
-| Pregunta | Respuesta |
-|----------|-----------|
-| Pregunta 1 | ![Respuesta 1](ruta/a/imagen1.png) |
-| Pregunta 2 | ![Respuesta 2](ruta/a/imagen2.png) |
-
 ## 9- Window function
 ### Problemas
 ### 1. Warming up
@@ -1735,4 +1730,90 @@ FROM route r1
   JOIN stops s2 ON r2l.stop = s2.id
 WHERE s1.name = 'Craiglockhart'
   AND s2.name = 'Lochend';
+```
+
+# Soluciones a las Prácticas de Beecrowd
+
+## Nivel 1
+
+### 1. Customer Address
+```sql
+-- Añade tu solución aquí
+```
+
+### 2. Providers' City in Alphabetical Order
+```sql
+-- Añade tu solución aquí
+```
+
+### 3. Higher and Lower Price
+```sql
+-- Añade tu solución aquí
+```
+
+### 4. Expanding the Business
+```sql
+-- Añade tu solución aquí
+```
+
+### 5. Provider Ajax SA
+```sql
+-- Añade tu solución aquí
+```
+
+### 6. Legal Person
+```sql
+-- Añade tu solución aquí
+```
+
+### 7. Passwords
+```sql
+-- Añade tu solución aquí
+```
+
+### 8. Viruses
+```sql
+-- Añade tu solución aquí
+```
+
+## Nivel 2
+
+### 9. Under 10 or Greater Than 100
+```sql
+-- Añade tu solución aquí
+```
+
+### 10. Cheap Movies
+```sql
+-- Añade tu solución aquí
+```
+
+### 11. Super Luxury
+```sql
+-- Añade tu solución aquí
+```
+
+### 12. How much earn a Doctor?
+```sql
+-- Añade tu solución aquí
+```
+
+### 13. Sillas Adyacentes
+```sql
+-- Añade tu solución aquí
+```
+
+### 14. Clasificación de un Árbol
+```sql
+-- Añade tu solución aquí
+```
+
+### 15. Seguidores
+```sql
+-- Añade tu solución aquí
+```
+
+### 16. Segundo Mayor y Menor
+```sql
+-- Añade tu solución aquí
 ```
